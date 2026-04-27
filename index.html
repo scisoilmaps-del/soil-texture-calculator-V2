@@ -110,54 +110,6 @@
   }
   .header-link:hover { border-bottom-color: var(--sci-clay); }
 
-  /* ============ HERO ============ */
-  .hero {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 32px 40px;
-  }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--sci-clay);
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 1px;
-    background: var(--sci-clay);
-  }
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(40px, 6vw, 68px);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
-    margin: 0 0 22px;
-    max-width: 900px;
-    color: var(--sci-earth);
-  }
-  .hero h1 em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--sci-leaf-deep);
-  }
-  .hero p.lede {
-    font-size: 18px;
-    line-height: 1.55;
-    max-width: 640px;
-    color: var(--sci-muted);
-    margin: 0;
-  }
-
   /* ============ CALCULATOR CARD ============ */
   .calculator {
     position: relative;
@@ -587,12 +539,6 @@
 </style>
 </head>
 <body>
-<!-- =============== HERO =============== -->
-<section class="hero">
-<h1>Soil Texture <em>Calculator</em></h1>
-  <p class="lede">Enter the sand and clay percentages from your soil test to identify USDA texture class. Texture shapes how your soil holds water, cycles nutrients, and responds to regenerative management.</p>
-</section>
-
 <!-- =============== CALCULATOR =============== -->
 <section class="calculator">
   <div class="calc-grid">
