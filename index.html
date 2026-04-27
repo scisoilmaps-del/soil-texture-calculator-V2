@@ -41,13 +41,14 @@
   /* Subtle paper grain background */
   body::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     background-image:
       radial-gradient(circle at 20% 30%, rgba(168, 85, 31, 0.04) 0%, transparent 40%),
       radial-gradient(circle at 80% 70%, rgba(63, 92, 58, 0.04) 0%, transparent 45%);
     pointer-events: none;
     z-index: 0;
+    will-change: auto;
   }
 
   /* ============ HEADER ============ */
@@ -164,6 +165,7 @@
     max-width: 1200px;
     margin: 0 auto 56px;
     padding: 0 32px;
+    contain: paint;
   }
   .calc-grid {
     display: grid;
@@ -660,7 +662,7 @@
       <!-- Triangle visualization -->
       <div class="triangle-wrap exact-triangle-wrap">
         <div id="triangleOverlay" class="triangle-overlay" role="img" aria-label="USDA soil texture triangle with your sample point">
-          <img id="triangleReference" src="soil-triangle.webp" alt="USDA soil texture triangle" />
+          <img id="triangleReference" src="soil-triangle.webp" alt="USDA soil texture triangle" width="1280" height="1368" decoding="async" />
           <div id="samplePointHalo" class="sample-point-halo"></div>
           <div id="samplePoint" class="sample-point-dot"></div>
         </div>
