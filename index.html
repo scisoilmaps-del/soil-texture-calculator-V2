@@ -40,7 +40,15 @@
 
   /* Subtle paper grain background */
   body::before {
-    display: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(168, 85, 31, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(63, 92, 58, 0.04) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+    will-change: auto;
   }
 
   /* ============ HEADER ============ */
@@ -155,26 +163,27 @@
     position: relative;
     z-index: 1;
     max-width: 1200px;
-    margin: 0 auto 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 32px;
     contain: paint;
+    box-sizing: border-box;
   }
   .calc-grid {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     gap: 0;
     background: #FFFFFF;
-    border: none;
-    border-radius: 0;
+    border: 1px solid var(--sci-line);
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: none;
+    box-shadow: var(--shadow-raised);
     align-items: stretch;
   }
 
   .calc-inputs {
     padding: 48px 44px;
     background: #FFFFFF;
-    border-right: none;
+    border-right: 1px solid var(--sci-line);
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -555,7 +564,6 @@
     height: 100%;
     display: block;
     object-fit: contain;
-    mix-blend-mode: multiply;
   }
   .sample-point-dot,
   .sample-point-halo {
