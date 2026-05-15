@@ -160,19 +160,16 @@
   .calculator {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 32px 24px 40px;
-    overflow-x: hidden;
+    max-width: 1200px;
+    margin: 0 auto 0;
+    padding: 0;
     contain: paint;
+    overflow-x: hidden;
   }
   .calc-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1.1fr;
     gap: 0;
-    width: 100%;
-    max-width: 100%;
     background: #FFFFFF;
     border: none;
     border-radius: 0;
@@ -182,16 +179,13 @@
   }
 
   .calc-inputs {
-    padding: 32px 24px;
+    padding: 48px 44px;
     background: #FFFFFF;
     border-right: none;
-    border-bottom: 1px solid var(--sci-line);
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 24px;
     align-self: stretch;
-    width: 100%;
-    max-width: 100%;
   }
 
   .section-title {
@@ -295,16 +289,17 @@
   .depth-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: -8px;
+    gap: 10px 12px;
+    margin-top: -4px;
   }
   .depth-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    min-width: 0;
   }
   .depth-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -312,46 +307,52 @@
   }
   .depth-field input[type="number"] {
     width: 100%;
+    min-width: 0;
+    padding: 8px 10px;
+    font-size: 13px;
   }
   .farm-details-mini {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding-bottom: 2px;
+    gap: 10px;
+    padding: 0 0 2px;
   }
   .farm-details-title {
     font-family: 'Fraunces', serif;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: -0.01em;
     margin: 0;
     color: var(--sci-earth);
   }
   .farm-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
   }
   .farm-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    min-width: 0;
   }
   .farm-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--sci-muted);
+    white-space: nowrap;
   }
   .farm-field input[type="text"],
   .farm-field input[type="date"] {
     width: 100%;
-    padding: 10px 12px;
+    min-width: 0;
+    padding: 8px 10px;
     border: 1px solid var(--sci-line);
     border-radius: 3px;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--sci-ink);
     background: var(--sci-cream);
     transition: border-color 0.2s ease, background 0.2s ease;
@@ -362,9 +363,8 @@
     border-color: var(--sci-leaf);
     background: #FFFFFF;
   }
-  .farm-field input::placeholder {
-    color: #c9b98f;
-  }
+  .farm-field.full { grid-column: 1 / -1; }
+
   input[type="number"] {
     width: 90px;
     padding: 10px 12px;
@@ -619,10 +619,10 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
     .hero { padding: 48px 24px 28px; }
-    .calculator { padding: 24px 18px 36px; }
+    .calculator { padding: 0 24px; }
     .calc-grid { grid-template-columns: 1fr; }
-    .calc-inputs { border-right: none; border-bottom: 1px solid var(--sci-line); padding: 28px 20px; }
-    .calc-results { padding: 28px 20px; }
+    .calc-inputs { border-right: none; border-bottom: 1px solid var(--sci-line); padding: 36px 28px; }
+    .calc-results { padding: 36px 28px; }
     .info-section { padding: 32px 24px 64px; }
     .info-grid { grid-template-columns: 1fr; gap: 16px; }
     .site-header-inner { padding: 18px 24px; }
@@ -632,8 +632,8 @@
     .brand-tag { display: none; }
     .hero h1 { font-size: 38px; }
     .header-link { font-size: 12px; }
-    .calculator { padding: 20px 14px 32px; }
-    .calc-inputs, .calc-results { padding: 22px 14px; }
+    .calc-inputs, .calc-results { padding: 28px 20px; }
+    .farm-grid, .depth-grid { grid-template-columns: 1fr; }
   }
 
   /* ============ ANIMATIONS ============ */
@@ -695,9 +695,6 @@
   }
 
   @media (max-width: 520px) {
-    .calculator { padding: 0 10px; }
-    .calc-inputs, .calc-results { padding: 22px 14px; }
-    .depth-grid { grid-template-columns: 1fr; gap: 10px; }
     .triangle-wrap.exact-triangle-wrap {
       max-width: 100%;
       width: min(100%, 420px);
@@ -718,11 +715,6 @@
 
     <!-- ----- INPUT PANEL ----- -->
     <div class="calc-inputs">
-      <div>
-        <h2 class="section-title">Composition Inputs</h2>
-        <p class="section-sub">Adjust sliders or enter values directly. Silt is calculated automatically so that the three components total 100%.</p>
-      </div>
-
       <div class="farm-details-mini">
         <h3 class="farm-details-title">Farm Details</h3>
         <div class="farm-grid">
@@ -734,11 +726,16 @@
             <label class="farm-label" for="fieldId">Field / Sample ID</label>
             <input type="text" id="fieldId" placeholder="e.g. North 40" />
           </div>
-          <div class="farm-field">
+          <div class="farm-field full">
             <label class="farm-label" for="sampleDate">Sample Date</label>
             <input type="date" id="sampleDate" />
           </div>
         </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Composition Inputs</h2>
+        <p class="section-sub">Adjust sliders or enter values directly. Silt is calculated automatically so that the three components total 100%.</p>
       </div>
 
       <div class="depth-grid">
